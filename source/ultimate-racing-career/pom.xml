@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>br.tec.gvfsolucoes</groupId>
+    <artifactId>ultimate-racing-career</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>ultimate-racing-career</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>17</java.version>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <junit.version>5.9.0</junit.version>
+        <org.openjfx.javafx.version>19</org.openjfx.javafx.version>
+        <org.controlsfx.version>11.1.2</org.controlsfx.version>
+        <org.apache.derby.version>10.15.2.0</org.apache.derby.version>
+        <org.xerial.sqlite.version>3.40.0.0</org.xerial.sqlite.version>
+        <ch.qos.logback.version>1.4.5</ch.qos.logback.version>
+        <org.slf4j.version>2.0.4</org.slf4j.version>
+        <org.liquibase.version>4.17.2</org.liquibase.version>
+        <org.liquibase.plugin.version>1.9.5.0</org.liquibase.plugin.version>
+        <org.apache.commons.lang.version>3.12.0</org.apache.commons.lang.version>
+        <org.apache.commons.io.version>2.11.0</org.apache.commons.io.version>
+        <org.apache.commons.configuration.version>2.8.0</org.apache.commons.configuration.version>
+        <org.apache.commons.collections.version>4.4</org.apache.commons.collections.version>
+        <org.apache.commons.rng.version>1.5</org.apache.commons.rng.version>
+        <org.apache.commons.dbutils.version>1.7</org.apache.commons.dbutils.version>
+        <com.fasterxml.jackson.version>2.14.0</com.fasterxml.jackson.version>
+    </properties>
+
+    <dependencies>
+        <!-- OPENJFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${org.openjfx.javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${org.openjfx.javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>${org.controlsfx.version}</version>
+        </dependency>
+        <!-- OPENJFX -->
+
+        <!-- DATABASE -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>${org.xerial.sqlite.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>${org.apache.commons.dbutils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${org.liquibase.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- DATABASE -->
+
+        <!-- LOGGIN -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${ch.qos.logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${ch.qos.logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+        <!-- LOGGIN -->
+
+        <!-- UTILS -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${org.apache.commons.lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${org.apache.commons.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${org.apache.commons.collections.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-rng-simple</artifactId>
+            <version>${org.apache.commons.rng.version}</version>
+        </dependency>
+        <!-- UTILS -->
+
+        <!-- TEST -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- TEST -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <executions>
+                    <execution>
+                        <!-- Default configuration for running with: mvn clean javafx:run -->
+                        <id>default-cli</id>
+                        <configuration>
+                            <mainClass>
+                                br.tec.gvfsolucoes.ultimateracingcareer/br.tec.gvfsolucoes.ultimateracingcareer.Launcher
+                            </mainClass>
+                            <launcher>urc-app</launcher>
+                            <jlinkZipName>urc-app</jlinkZipName>
+                            <jlinkImageName>urc-app</jlinkImageName>
+                            <noManPages>true</noManPages>
+                            <stripDebug>true</stripDebug>
+                            <noHeaderFiles>true</noHeaderFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+.content {
+    -fx-background-color: #000000;
+}
+
+.text {
+    -fx-text-fill: #eeeeee;
+    -fx-font-family: 'Oswald', sans-serif;
+}
+
+.title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}

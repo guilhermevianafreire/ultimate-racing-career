@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+.content {
+    -fx-background-color: #000000;
+}
+
+.title {
+    -fx-font-family: 'Oswald', sans-serif;
+    -fx-text-fill: #25a1cf;
+    -fx-font-size: 36px;
+}
+
+.number {
+    -fx-font-family: 'Oswald', sans-serif;
+    -fx-text-fill: #eeeeee;
+    -fx-font-size: 28px;
+}
+
+.number-positive {
+    -fx-text-fill: green;
+}
+
+.number-negative {
+    -fx-text-fill: red;
+}
+
+.button {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-min-width: 60px;
+    -fx-min-height: 60px;
+    -fx-background-radius: 30px;
+}
+
+.button-increment {
+    -fx-text-fill: green;
+}
+
+.button-decrement {
+    -fx-text-fill: red;
+}
