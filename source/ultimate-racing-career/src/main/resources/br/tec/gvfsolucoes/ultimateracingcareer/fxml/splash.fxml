@@ -21,7 +21,6 @@
             spacing="10.0"
     >
         <Label fx:id="step" styleClass="text"/>
-        <Label fx:id="percentage" styleClass="text"/>
     </HBox>
     <ProgressBar fx:id="loadingProcessBar" progress="0.0" scaleX="3"/>
 </VBox>

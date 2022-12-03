@@ -3,7 +3,9 @@ package br.tec.gvfsolucoes.ultimateracingcareer.conttroller;
 import br.tec.gvfsolucoes.ultimateracingcareer.Launcher;
 import br.tec.gvfsolucoes.ultimateracingcareer.db.LiquibaseHelper;
 import br.tec.gvfsolucoes.ultimateracingcareer.exception.ApplicationLoadingException;
+import br.tec.gvfsolucoes.ultimateracingcareer.task.LoadingTask;
 import br.tec.gvfsolucoes.ultimateracingcareer.task.TaskBuilder;
+import br.tec.gvfsolucoes.ultimateracingcareer.task.ThreadPool;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -28,27 +30,14 @@ public class SplashController {
     private ProgressBar loadingProcessBar;
 
     @FXML
-    private Label percentage;
-
-    @FXML
     private Label step;
 
     public void loadResources() {
-        Task<Void> task = TaskBuilder.create(() -> {
-            updateLoadingStep(.5, "Creating or updating the database");
-            try (LiquibaseHelper liquibaseHelper = new LiquibaseHelper()) {
-                liquibaseHelper
-                        .validate()
-                        .update();
-            }
-            updateLoadingStep(1., "Finished");
-            Thread.sleep(1000);
-            return null;
-        });
+        LoadingTask task = new LoadingTask();
+        loadingProcessBar.progressProperty().bind(task.progressProperty());
+        step.textProperty().bind(task.messageProperty());
         task.setOnSucceeded(event -> loadMainScene());
-        Thread thread = new Thread(task);
-        thread.setDaemon(true);
-        thread.start();
+        ThreadPool.getInstance().getExecutor().execute(task);
     }
 
     public void loadMainScene() {
@@ -61,14 +50,6 @@ public class SplashController {
         } catch (IOException e) {
             throw new ApplicationLoadingException(e);
         }
-    }
-
-    private void updateLoadingStep(double progress, String stepText) {
-        Platform.runLater(() -> {
-            loadingProcessBar.setProgress(progress);
-            step.setText(stepText);
-            percentage.setText(((int)(progress * 100.)) + " %");
-        });
     }
 
     public SplashController setStage(Stage stage) {
