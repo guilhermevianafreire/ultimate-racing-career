@@ -99,5 +99,6 @@ public class ThreadPool implements AutoCloseable {
     @Override
     public void close() throws Exception {
         executor.shutdown();
+        instance = null;
     }
 }
