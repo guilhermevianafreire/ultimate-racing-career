@@ -32,7 +32,7 @@ Simulate a racing career starting from the lowest entry points of racing to the 
 
 - Distribution build very small
 
-- No install necessery
+- No install necessary
 
 - Modern UI Design
 
@@ -45,18 +45,16 @@ Simulate a racing career starting from the lowest entry points of racing to the 
 ## Application Features
 
 - Create one or more drivers
-  
-  - Define name
-  
-  - Starting age
-  
-  - Starting Regeon
 
 - Driver Region change
 
+- Turn based
+
+- Generate random championships calendars based on driver region and current year
+
 - Administration
   
-  - Manage Categories (cars, championships, tracks, etc)
+  - Manage Categories (cars, championships, tracks, sponsors, etc)
   
   - Manage Regions
   
@@ -66,7 +64,11 @@ Simulate a racing career starting from the lowest entry points of racing to the 
   
   - Manage Tracks
   
-  - Manage Champioships
+  - Manage Championships
+  
+  - Manage Sponsors
+  
+  - Manage Sponsor Contracts
   
   - Application Configuration
 
