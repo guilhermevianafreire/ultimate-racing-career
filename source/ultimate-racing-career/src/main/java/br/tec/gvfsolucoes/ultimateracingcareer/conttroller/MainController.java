@@ -1,37 +1,62 @@
 package br.tec.gvfsolucoes.ultimateracingcareer.conttroller;
 
+import br.tec.gvfsolucoes.ultimateracingcareer.Launcher;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainController {
     public static final String FXML = "fxml/main.fxml";
-    public static final double WIDTH = 400.;
-    public static final double HEIGTH = 400.;
+    public static final double WIDTH = 854.;
+    public static final double HEIGTH = 480.;
 
-    private Integer counterValue = 0;
-
-    @FXML
-    private Label counterNumber;
+    private Stage stage;
 
     @FXML
-    protected void onIncrementButtonClick() {
-        counterValue++;
-        updateLabelNumber();
+    private BorderPane mainPane;
+
+    public void initialize() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Launcher.class.getResource(HomeController.FXML));
+            mainPane.setCenter(fxmlLoader.load());
+            mainPane.requestFocus();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
-    protected void onDecrementButtonClick() {
-        counterValue--;
-        updateLabelNumber();
+    private void openConfigurationDriver(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Launcher.class.getResource(DriverController.FXML));
+            mainPane.setCenter(fxmlLoader.load());
+            mainPane.requestFocus();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    private void updateLabelNumber() {
-        counterNumber.setText(counterValue.toString());
-        counterNumber.getStyleClass().removeAll("number-positive", "number-negative");
-        if (counterValue > 0)
-            counterNumber.getStyleClass().add("number-positive");
-        else if (counterValue < 0)
-            counterNumber.getStyleClass().add("number-negative");
+    @FXML
+    private void openApplicationHome(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Launcher.class.getResource(HomeController.FXML));
+            mainPane.setCenter(fxmlLoader.load());
+            mainPane.requestFocus();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    public MainController setMainPane(BorderPane borderPane) {
+        return this;
+    }
+
+    public MainController setStage(Stage stage) {
+        this.stage = stage;
+        return this;
     }
 }

@@ -1,6 +1,7 @@
 package br.tec.gvfsolucoes.ultimateracingcareer.task;
 
 import br.tec.gvfsolucoes.ultimateracingcareer.db.LiquibaseHelper;
+import br.tec.gvfsolucoes.ultimateracingcareer.util.FontAwsomeHelper;
 import javafx.concurrent.Task;
 
 public class LoadingTask extends Task<Throwable> {
@@ -18,7 +19,7 @@ public class LoadingTask extends Task<Throwable> {
      */
     @Override
     protected Throwable call() throws Exception {
-        updateProgress(.5, 1.);
+        updateProgress(.25, 1.);
         updateMessage("Creating or updating the database");
         try (LiquibaseHelper liquibaseHelper = new LiquibaseHelper()) {
             liquibaseHelper
@@ -27,6 +28,10 @@ public class LoadingTask extends Task<Throwable> {
         } catch (Throwable t) {
             return t;
         }
+        updateProgress(.25, 1.);
+        updateMessage("Registering FontAwsome Icons");
+        FontAwsomeHelper.getInstance().getGlyphFont();
+        Thread.sleep(500);
         updateProgress(1., 1.);
         updateMessage("Finished");
         Thread.sleep(500);

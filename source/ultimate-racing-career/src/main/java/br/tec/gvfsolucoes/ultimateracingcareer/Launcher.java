@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.controlsfx.glyphfont.GlyphFont;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,7 +43,6 @@ public class Launcher extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Launcher.class.getResource(SplashController.FXML));
         Scene scene = new Scene(fxmlLoader.load(), SplashController.WIDTH, SplashController.HEIGTH);
-
         SplashController splashController = fxmlLoader.getController();
         splashController.setStage(stage);
         stage.setResizable(false);
@@ -76,12 +76,6 @@ public class Launcher extends Application {
         super.stop();
     }
 
-    public static void main(String[] args) {
-        checkSingleInstance();
-        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
-        launch(args);
-    }
-
     /**
      * Check if the application is already running.<br>
      * If it is running, the second instance is not going to start.
@@ -97,5 +91,11 @@ public class Launcher extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void main(String[] args) {
+        checkSingleInstance();
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
+        launch(args);
     }
 }

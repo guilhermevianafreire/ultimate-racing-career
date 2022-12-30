@@ -1,6 +1,8 @@
 module br.tec.gvfsolucoes.ultimateracingcareer {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.base;
+    requires javafx.graphics;
 
     requires org.controlsfx.controls;
 
@@ -21,6 +23,7 @@ module br.tec.gvfsolucoes.ultimateracingcareer {
     requires org.apache.commons.rng.core;
     requires org.apache.commons.rng.simple;
     requires commons.dbutils;
+    requires com.jfoenix;
 
     exports br.tec.gvfsolucoes.ultimateracingcareer;
     exports br.tec.gvfsolucoes.ultimateracingcareer.conttroller;

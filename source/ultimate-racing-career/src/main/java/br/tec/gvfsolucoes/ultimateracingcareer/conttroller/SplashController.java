@@ -14,7 +14,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -33,6 +35,7 @@ public class SplashController {
     private Label step;
 
     public void loadResources() {
+        stage.initStyle(StageStyle.UNDECORATED);
         LoadingTask task = new LoadingTask();
         loadingProcessBar.progressProperty().bind(task.progressProperty());
         step.textProperty().bind(task.messageProperty());
@@ -42,14 +45,21 @@ public class SplashController {
 
     public void loadMainScene() {
         try {
-            Parent  parent = FXMLLoader.load(Launcher.class.getResource(MainController.FXML));
-            Scene scene = new Scene(parent, MainController.WIDTH, MainController.HEIGTH);
+            FXMLLoader fxmlLoader = new FXMLLoader(Launcher.class.getResource(MainController.FXML));
+            Scene scene = new Scene(fxmlLoader.load(), MainController.WIDTH, MainController.HEIGTH);
+            MainController mainController = fxmlLoader.getController();
+            mainController.setStage(stage);
             stage.setTitle("Ultimate Racing Career - Main");
             stage.setResizable(true);
             stage.setScene(scene);
+            stage.initStyle(StageStyle.DECORATED);
         } catch (IOException e) {
             throw new ApplicationLoadingException(e);
         }
+    }
+
+    public SplashController setMainPane(BorderPane borderPane) {
+        return this;
     }
 
     public SplashController setStage(Stage stage) {
